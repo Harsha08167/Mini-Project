@@ -1,0 +1,12 @@
+//CONSTANTS in C
+//SYNTAX:-
+//#define NAME value(NAME can be macro)
+//Job of preprocessor(not compiler) to replace NAME with value
+//whatever inside double quotes"" won't get replaced
+#include<stdio.h>
+#define value 89
+int main()
+{
+printf("value is %d", value);//"value" in string is not replaced with 89
+return 0;
+} 
