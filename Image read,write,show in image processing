@@ -1,0 +1,22 @@
+import cv2
+
+img=cv2.imread("D:\hec.jpg",1)
+img=cv2.resize(img,(1000,700))#width,height
+print(img)
+cv2.imshow("original",img)
+
+
+#cv2.imread_grayscale : load image in grayscale mode
+img1=cv2.imread("D:\hec.jpg",0)
+img1=cv2.resize(img1,(1000,700))#width,height
+cv2.imshow("Gray Scale Image",img1)
+print("Image in gray scale==\n",img1)
+
+#cv2.imread_unchanged : load image as such including alpha channels
+img2=cv2.imread("D:\hec.jpg",-1)
+img2=cv2.resize(img2,(1000,700))#width,height
+cv2.imshow("Unchanged Image",img2)
+print("Image in original value==\n",img1)
+
+cv2.waitKey()
+cv2.destroyWindows()
