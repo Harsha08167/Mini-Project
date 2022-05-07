@@ -1,0 +1,16 @@
+#Image conversion project colored image into grayscale
+
+path=input("enter the path and name of an image==")
+print("you enter this===",path)
+
+#now read image
+img=cv2.imread(path,0)
+img=cv2.resize(img,(550,700)) #width,height
+cv2.imshow("converted image==",img)
+
+#to store the image
+k=cv2.waitKey()
+if k==ord("s"):
+    cv2.imwrite("D:\output.png",img)
+else:
+    cv2.destroyAllWindows()
