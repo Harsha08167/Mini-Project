@@ -1,0 +1,30 @@
+import cv2
+import numpy as np
+
+
+img1 = cv2.imread("D:\he.jpg",0)
+resize_img = cv2.resize(img1,(800,800))
+#ROI
+roi=cv2.selectROI(resize_img)
+print(roi)
+img_cropped=resize_img[int(roi[1]):int(roi[1]+roi[3]),int(roi[0]):int(roi[0]+roi[2])]
+
+#Thresholding
+ret,thresh = cv2.threshold(img_cropped,70,255,0)
+#Canny Algorithm
+img = cv2.Canny(thresh,0,255)
+#Contours
+cnts,hier = cv2.findContours(img,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)#using contour detection,we can detect the borders of object,and localize them easily in an image.
+print("Number of contour==",cnts,"\ntotal contour==",len(cnts))
+var=len(cnts)
+if var>110:
+    print('fault piece')
+else:
+   print('perfect piece')
+contour_img = cv2.drawContours(img_cropped,cnts,-1,(25,100,15),4)
+
+cv2.imshow("contours", contour_img)
+cv2.imshow("Canny",img)
+cv2.imshow("thresh==", thresh)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
